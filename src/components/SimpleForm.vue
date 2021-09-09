@@ -1,8 +1,15 @@
 <script setup lang="ts">
 import { ref } from "@vue/reactivity";
+import { onMounted } from "@vue/runtime-core";
 import CountryData from "../services/DataService/HandleRequest";
 
-const country = CountryData.getCountryList();
+const countrys = ref([]);
+
+onMounted(async () => {
+  let res = await CountryData.getCountryList();
+
+  countrys.value = res.data.list;
+});
 
 const schema = ref({
   name: "required|min:3|max:100|alpha_spaces",
@@ -24,7 +31,7 @@ const userData = ref({
   country: "USA",
 });
 const submit = (values: any) => {
-  console.log(country);
+  console.log(countrys.value);
   console.log(values);
 };
 </script>
@@ -303,10 +310,9 @@ const submit = (values: any) => {
             rounded
           "
         >
-          <option value="USA">USA</option>
-          <option value="Mexico">Mexico</option>
-          <option value="Germany">Germany</option>
-          <option value="Antartica">Antartica</option>
+          <option v-for="country in countrys" :value="country">
+            {{ country }}
+          </option>
         </vee-field>
         <ErrorMessage class="text-red-600" name="country" />
       </div>
