@@ -2,6 +2,7 @@
 import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import CountryData from "../services/DataService/HandleRequest";
+import VueMultiselect from "./MultiSelects.vue";
 
 const countrys = ref([]);
 
@@ -17,9 +18,6 @@ const schema = ref({
   age: "required|min_value:18|max_value:100",
   mobile: "required|min:11",
   date: "required",
-  time: "required",
-  month: "required",
-  week: "required",
   file: "required|mimes:image/*|size:1000",
   password: "required|min:3|max:100",
   confirm_password: "password_mismatch:@password",
@@ -42,7 +40,6 @@ const submit = (values: any) => {
       :validation-schema="schema"
       @submit="submit"
       :initial-values="userData"
-      class="flex flex-wrap"
     >
       <!-- Name -->
       <div class="m-6">
@@ -225,72 +222,6 @@ const submit = (values: any) => {
         />
         <ErrorMessage class="text-red-600" name="file" />
       </div>
-      <!-- time -->
-      <div class="m-6">
-        <label class="inline-block mb-2">Pick a time</label>
-        <vee-field
-          name="time"
-          type="time"
-          class="
-            block
-            w-full
-            py-1.5
-            px-3
-            text-gray-800
-            border border-gray-300
-            transition
-            duration-500
-            focus:outline-none focus:border-black
-            rounded
-          "
-          placeholder="Confirm Password"
-        />
-        <ErrorMessage class="text-red-600" name="time" />
-      </div>
-      <!-- month -->
-      <div class="m-6">
-        <label class="inline-block mb-2">Pick a month</label>
-        <vee-field
-          name="month"
-          type="month"
-          class="
-            block
-            w-full
-            py-1.5
-            px-3
-            text-gray-800
-            border border-gray-300
-            transition
-            duration-500
-            focus:outline-none focus:border-black
-            rounded
-          "
-          placeholder="Confirm Password"
-        />
-        <ErrorMessage class="text-red-600" name="month" />
-      </div>
-      <!-- week -->
-      <div class="m-6">
-        <label class="inline-block mb-2">Pick a week</label>
-        <vee-field
-          name="week"
-          type="week"
-          class="
-            block
-            w-full
-            py-1.5
-            px-3
-            text-gray-800
-            border border-gray-300
-            transition
-            duration-500
-            focus:outline-none focus:border-black
-            rounded
-          "
-          placeholder="Confirm Password"
-        />
-        <ErrorMessage class="text-red-600" name="week" />
-      </div>
       <!-- Country -->
       <div class="m-6">
         <label class="inline-block mb-2">Country</label>
@@ -315,6 +246,9 @@ const submit = (values: any) => {
           </option>
         </vee-field>
         <ErrorMessage class="text-red-600" name="country" />
+      </div>
+      <div class="m-6">
+        <VueMultiselect />
       </div>
       <!-- TOS -->
       <div class="m-6 pl-6">

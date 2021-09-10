@@ -7,3 +7,5 @@ import SimpleForm from "./components/SimpleForm.vue";
     <SimpleForm />
   </div>
 </template>
+
+<style src="vue-multiselect/dist/vue-multiselect.css"></style>
