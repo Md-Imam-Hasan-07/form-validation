@@ -17,6 +17,7 @@ const schema = ref({
   email: "required|min:3|max:100|email",
   age: "required|min_value:18|max_value:100",
   mobile: "required|min:11",
+  description: "required|min:20",
   date: "required",
   file: "required|mimes:image/*|size:1000",
   password: "required|min:3|max:100",
@@ -28,9 +29,10 @@ const schema = ref({
 const userData = ref({
   country: "USA",
 });
-const submit = (values: any) => {
+const submit = (values: any, { resetForm }) => {
   console.log(countrys.value);
   console.log(values);
+  resetForm();
 };
 </script>
 
@@ -126,6 +128,27 @@ const submit = (values: any) => {
           "
         />
         <ErrorMessage class="text-red-600" name="mobile" />
+      </div>
+      <!-- Description -->
+      <div class="m-6">
+        <label class="inline-block mb-2">Tell something about yourself</label>
+        <vee-field
+          name="description"
+          type="textarea"
+          class="
+            block
+            w-full
+            py-1.5
+            px-3
+            text-gray-800
+            border border-gray-300
+            transition
+            duration-500
+            focus:outline-none focus:border-black
+            rounded
+          "
+        />
+        <ErrorMessage class="text-red-600" name="description" />
       </div>
       <!-- Date -->
       <div class="m-6">

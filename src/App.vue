@@ -3,7 +3,7 @@ import SimpleForm from "./components/SimpleForm.vue";
 </script>
 
 <template>
-  <div class="items-center justify-center flex m-20">
+  <div class="items-center justify-center flex p-20 bg-blue-300">
     <SimpleForm />
   </div>
 </template>

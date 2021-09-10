@@ -3,7 +3,7 @@ import Multiselect from 'vue-multiselect';
 import { ref } from "@vue/reactivity";
 import VueMultiselect from "vue-multiselect";
 
-const value = ref([{ name: "Javascript", code: "js" }]);
+const value = ref([]);
 const options = ref([
   { name: "Vue.js", code: "vu" },
   { name: "Javascript", code: "js" },
@@ -22,7 +22,7 @@ const addTag = (newTag: any) => {
 
 <template>
   <div>
-    <label class="typo__label">Tagging</label>
+    <label class="typo__label">Select Skills</label>
     <VueMultiselect
       v-model="value"
       tag-placeholder="Add this as new tag"
