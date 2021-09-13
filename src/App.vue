@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import SimpleForm from "./components/SimpleForm.vue";
+import AppHeader from "./components/Header.vue";
 </script>
 
 <template>
-  <div class="items-center justify-center flex p-20 bg-blue-300">
-    <SimpleForm />
+  <div class="items-center justify-center flex flex-col p-20 bg-blue-300">
+    <app-header />
+    <router-view />
   </div>
 </template>
 

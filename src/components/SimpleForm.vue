@@ -37,7 +37,8 @@ const submit = (values: any, { resetForm }) => {
 </script>
 
 <template>
-  <div class="mx-20 px-20">
+  <div class="mx-20 p-20 w-7/12 bg-white rounded-2xl">
+    <h2>Create an Account</h2>
     <vee-form
       :validation-schema="schema"
       @submit="submit"
