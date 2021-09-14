@@ -3,7 +3,7 @@ import AppHeader from "./components/Header.vue";
 </script>
 
 <template>
-  <div class="items-center justify-center flex flex-col p-20 bg-blue-300">
+  <div class="items-center justify-center flex flex-col p-10">
     <app-header />
     <router-view />
   </div>

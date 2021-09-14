@@ -1,5 +1,5 @@
 <template>
-  <div class="pb-20">
+  <div class="pb-10">
     <ul class="flex">
       <li class="mr-3">
         <router-link to="/">Register</router-link>

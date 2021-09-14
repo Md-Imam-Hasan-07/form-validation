@@ -3,7 +3,7 @@ import http from "../http-common";
 
 class HandleRequest {
   getCountryList(): Promise<ResponseData> {
-    return http.get("/country");
+    return http.get("/all");
   }
 }
 
