@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue-demi";
+import { inject, onMounted, ref } from "vue-demi";
 import SimpleForm from "../components/SimpleForm.vue";
 import CountryData from "../services/DataService/HandleRequest";
 
@@ -18,14 +18,21 @@ const schema = ref({
   tos: "tos",
 });
 
+let store = inject("store");
+
 onMounted(async () => {
   let res = await CountryData.getCountryList();
-  console.log(res.data);
 
   countrys.value = res.data;
 });
+
+const submit = async (values: any) => {
+  const res = await CountryData.getCountryInfo(values.country);
+  values.country = res.data;
+  store.methods.addUser(values);
+};
 </script>
 
 <template>
-  <SimpleForm :countrys="countrys" :schema="schema" />
+  <SimpleForm :countrys="countrys" :schema="schema" @submit="submit" />
 </template>

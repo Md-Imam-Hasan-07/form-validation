@@ -6,7 +6,7 @@ import VueMultiselect from "./MultiSelects.vue";
 const route = useRoute();
 
 const routePath = computed(() => {
-  return route.path === "/" ? "register" : "login";
+  return route.path === "/register" ? "register" : "login";
 });
 
 const props = defineProps({
@@ -19,8 +19,10 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits(["submit"]);
+
 const submit = (values: any, { resetForm }) => {
-  console.log(values);
+  emit("submit", values);
 
   resetForm();
 };
