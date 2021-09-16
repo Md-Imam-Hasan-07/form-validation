@@ -8,7 +8,6 @@ const state = reactive({
 
 const methods = {
   addUser(payload: any) {
-    console.log(payload);
     state.users.push(payload);
   },
   checkCredential(payload: any) {
@@ -17,7 +16,7 @@ const methods = {
       (user) =>
         user.email === payload.email && user.password === payload.password
     );
-    if (isRightUser) {
+    if (isRightUser.length > 0) {
       state.isLoggedIn = true;
     } else {
       state.isLoggedIn = false;

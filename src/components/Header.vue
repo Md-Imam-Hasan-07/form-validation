@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { inject } from "vue-demi";
+import { useRouter } from "vue-router";
 
 const store = inject("store");
+const router = useRouter();
 
 const logout = () => {
   store.methods.logout();
-  window.location.reload();
+  router.push({ name: "Login" });
 };
 </script>
 <template>
@@ -24,7 +26,7 @@ const logout = () => {
       </div>
       <div class="flex" v-else>
         <li class="mr-10">
-          <p>{{ store.state.loggedInUser.name }}</p>
+          <p>{{ store.state.loggedInUser.email }}</p>
         </li>
         <li class="mr-10">
           <a href="#" @click.prevent="logout">Logout</a>

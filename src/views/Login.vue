@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { inject, ref } from "vue-demi";
+import { useRouter } from "vue-router";
 import SimpleForm from "../components/SimpleForm.vue";
 
 const schema = ref({
@@ -7,13 +8,16 @@ const schema = ref({
   password: "required|min:3|max:100",
 });
 
+const router = useRouter();
+
 let store = inject("store");
 
 const submit = (values: any) => {
-  try {
-    store.methods.checkCredential(values);
-  } catch (err) {
+  const err = store.methods.checkCredential(values);
+  if (err) {
     alert(err);
+  } else {
+    router.push({ name: "SecurePage" });
   }
 };
 </script>
